@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Allow users to create prebuilt lists for webforms using existing API
+ */
+
+/** 
+ * Implements hook_menu()
+ */
+function prebuilt_lists_menu() {
+  // Show existing prebuilt lists
+  $items['admin/structure/prebuilt-lists'] = array(
+    'title' => 'Prebuilt Lists',
+    'description' => 'Show all existing Prebuilt Lists',
+    'access arguments' => 'array('access administration pages'),
+    'file' => 'prebuild_lists.admin.inc',
+    'file path' => drupal_get_path('module', 'prebuilt_lists'),
+  );
+  return $items;
+}
+
