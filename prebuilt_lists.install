@@ -1,0 +1,11 @@
+<?php
+//TODO: Create a valid schema for storing lists. Issue # 8
+
+/* Example Schema
+ * 
+ * list_id => autoincrementing primary unique key
+ * title => title of the list as shown to the user
+ * name => machine name of the list
+ * description => textarea to help other people understand purpose of list
+ * contents => array of key/value pairs in the same style as webforms ( key|Value )
+ */
