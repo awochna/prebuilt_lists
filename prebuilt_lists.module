@@ -13,8 +13,8 @@ function prebuilt_lists_menu() {
 	
   // Show existing prebuilt lists
   $items['admin/structure/prebuilt-lists'] = array(
-    'title' => 'Prebuilt Lists',
-    'description' => 'Show all existing Prebuilt Lists',
+    'title' => t('Prebuilt Lists'),
+    'description' => t('Show all existing Prebuilt Lists'),
     'access arguments' => array('access administration pages'),
     'page callback' => prebuilt_lists_list,
     'file' => 'prebuilt_lists.admin.inc',
@@ -23,9 +23,12 @@ function prebuilt_lists_menu() {
   
   // Create new list
   $items['admin/structure/prebuilt-lists/new'] = array(
-    'title' => 'New List',
-    'description' => 'Create a new list for use and reuse in Webforms',
-    'page callback' => prebuilt_lists_new,
+    'title' => t('New List'),
+    'description' => t('Create a new list for use and reuse in Webforms'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('prebuilt_lists_new'),
+    'access callback' => 'user access',
+    'access arguments' => array('create prebuilt lists'),
     'file' => 'prebuilt_lists.admin.inc',
     'file path' => drupal_get_path('module', 'prebuilt_lists'),
   );
@@ -33,8 +36,24 @@ function prebuilt_lists_menu() {
   return $items;
 }
 
+/**
+ * Implements hook_permission()
+ */
+ 
+function prebuilt_lists_permission() {
+  return array(
+    'view prebuilt lists' => array(
+      'title' => t('View Prebuilt Lists'),
+      'description' => t('Allows the user to view lists that have already been created'),
+    ),
+    'create prebuilt lists' => array(
+      'title' => t('Create/Update Prebuilt Lists'),
+      'description' => t('Allows the user to create new lists and update existing ones'),
+    ),
+  );
+};
+
 //TODO: Create logic for inserting new lists into the database. Issue #3
 //TODO: Implement hook_webform_select_options_info() Issue #4
 //TODO: Allow editing of existing lists in the database. Issue #5
 //TODO: Check for valid keys when inserting or updating. Autogenerate keys assuming input is only the Value. Issue #9
-
