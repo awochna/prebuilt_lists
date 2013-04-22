@@ -33,7 +33,6 @@ function new_prebuilt_lists_page() {
  */
 
 function prebuilt_lists_new($form, &$form_submit) {
-  //TODO: Build forms for creating a new list. Issue #2
   $form['name'] = array(
     '#title' => t('Name'),
     '#type' => 'textfield',
@@ -44,6 +43,7 @@ function prebuilt_lists_new($form, &$form_submit) {
     '#type' => 'machine_name',
     '#default_value' => $prebuilt_lists['machine_name'],
     '#maxlength' => 200,
+    '#required' => TRUE,
   );
   $form['description'] = array(
     '#type' => 'textarea',
@@ -54,4 +54,24 @@ function prebuilt_lists_new($form, &$form_submit) {
     '#description' => t('<strong>Key-value pairs MUST be specified as "safe_key|Some readable option"</strong>. Use of only alphanumeric characters and underscores is recommended in keys. One option per line. Option groups may be specified with <Group Name>. <> can be used to insert items at the root of the menu after specifying a group.')
   );
   return $form;
+};
+
+function prebuilt_lists_new_validate($form, &$form_state) {
+  // Validate the machine name by making sure it doesn't already exist in the database.
+  return;
+};
+
+function prebuilt_lists_add() {
+  global $user;
+  
+  $list_id = db_insert('prebuilt_lists')
+    ->fields(array(
+      'name' => 'name',
+      'machine_name' => 'machine_name',
+      'description' => 'description',
+      'contents' => 'contents',
+      'uid' => $user->uid,  
+    ))
+    ->execute();
+  return $list_id;
 };

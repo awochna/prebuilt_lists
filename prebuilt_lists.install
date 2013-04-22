@@ -1,5 +1,4 @@
 <?php
-//TODO: Create a valid schema for storing lists. Issue # 8
 
 /* Example Schema
  * 
@@ -30,7 +29,7 @@ function prebuilt_lists_uninstall() {
 /**
  * Implements hook_schema().
  */
-
+//TODO: Create a valid schema for storing lists. Issue # 8
 function prebuilt_lists_schema() {
   $schema['prebuilt_lists'] = array(
     'description' => 'Table for prebuilt lists.',

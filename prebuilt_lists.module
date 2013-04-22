@@ -34,7 +34,7 @@ function prebuilt_lists_menu() {
   );
   
   return $items;
-}
+};
 
 /**
  * Implements hook_permission()
@@ -51,6 +51,11 @@ function prebuilt_lists_permission() {
       'description' => t('Allows the user to create new lists and update existing ones'),
     ),
   );
+};
+
+function prebuilt_lists_fetch($number = 10) {
+  $result = db_query("SELECT * FROM {prebuilt_lists} ORDER BY list_id ASC", 0, $number);
+  return $result;
 };
 
 //TODO: Create logic for inserting new lists into the database. Issue #3
