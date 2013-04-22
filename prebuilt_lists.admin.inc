@@ -33,7 +33,6 @@ function new_prebuilt_lists_page() {
  */
 
 function prebuilt_lists_new($form, &$form_submit) {
-  //TODO: Build forms for creating a new list. Issue #2
   $form['name'] = array(
     '#title' => t('Name'),
     '#type' => 'textfield',
