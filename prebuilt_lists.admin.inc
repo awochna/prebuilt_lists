@@ -57,9 +57,13 @@ function prebuilt_lists_new($form, &$form_submit) {
 };
 
 function prebuilt_lists_new_validate($form, &$form_state) {
-  // Validate the machine name by making sure it doesn't already exist in the database.
+  // Validate the $form[machine_name] by making sure it doesn't already exist in the database.
   return;
 };
+
+/**
+ * Simple function to add the newly created list to the databse, to be called after prebuilt_lists_new_validate()
+ */
 
 function add_prebuilt_lists() {
   global $user;
@@ -75,6 +79,10 @@ function add_prebuilt_lists() {
     ->execute();
   return $list_id;
 };
+
+/**
+ * Function to delete prebuilt lists, should be available through prebuilt_lists_list and permission restricted.
+ */
 
 function delete_prebuilt_lists($selection) {
   $deleted = db_delete('prebuilt_lists')

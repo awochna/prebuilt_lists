@@ -47,10 +47,25 @@ function prebuilt_lists_permission() {
       'description' => t('Allows the user to view lists that have already been created. Should coincide with ability to create and edit webforms.'),
     ),
     'create prebuilt lists' => array(
-      'title' => t('Create/Update Prebuilt Lists'),
-      'description' => t('Allows the user to create new lists and update existing ones.'),
+      'title' => t('Create Prebuilt Lists'),
+      'description' => t('Allows the user to create new lists.'),
     ),
-    //TODO: Fine-grain permissions.
+    'edit own prebuilt lists' => array(
+      'title' => t('Edit Own Prebuilt Lists'),
+      'description' => t('Allows the user to edit the prebuilt lists they originally created.'),
+    ),
+    'edit any prebuilt lists' => array(
+      'title' => t('Edit Any Prebuilt Lists'),
+      'description' => t('Allows the user to edit any prebuilt lists.'),
+    ),
+    'delete own prebuilt lists' => array(
+      'title' => t('Delete Own Prebuilt Lists'),
+      'description' => t('Allows the user to delete prebuilt lists they originally created.'),
+    ),
+    'delete any prebuilt lists' => array(
+      'title' => t('Delete Any Prebuilt lists'),
+      'description' => t('Allows the user to delete any prebuilt lists.'),
+    ),
   );
 };
 
@@ -59,8 +74,6 @@ function prebuilt_lists_fetch($number = 10) {
   return $result;
 };
 
-
-//TODO: Create logic for inserting new lists into the database. Issue #3
 //TODO: Implement hook_webform_select_options_info() Issue #4
 //TODO: Allow editing of existing lists in the database. Issue #5
 //TODO: Check for valid keys when inserting or updating. Autogenerate keys assuming input is only the Value. Issue #9
