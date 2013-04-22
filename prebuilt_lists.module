@@ -50,27 +50,19 @@ function prebuilt_lists_permission() {
       'title' => t('Create Prebuilt Lists'),
       'description' => t('Allows the user to create new lists.'),
     ),
-    'edit own prebuilt lists' => array(
-      'title' => t('Edit Own Prebuilt Lists'),
-      'description' => t('Allows the user to edit the prebuilt lists they originally created.'),
+    'edit and delete own prebuilt lists' => array(
+      'title' => t('Edit and Delete Own Prebuilt Lists'),
+      'description' => t('Allows the user to edit and delete lists they created.'),
     ),
-    'edit any prebuilt lists' => array(
-      'title' => t('Edit Any Prebuilt Lists'),
-      'description' => t('Allows the user to edit any prebuilt lists.'),
-    ),
-    'delete own prebuilt lists' => array(
-      'title' => t('Delete Own Prebuilt Lists'),
-      'description' => t('Allows the user to delete prebuilt lists they originally created.'),
-    ),
-    'delete any prebuilt lists' => array(
-      'title' => t('Delete Any Prebuilt lists'),
-      'description' => t('Allows the user to delete any prebuilt lists.'),
+    'edit and delete any prebuilt lists' => array(
+      'title' => t('Edit and Delete Any Prebuilt Lists'),
+      'description' => t('Allows the user to edit and delete any prebuilt lists.'),
     ),
   );
 };
 
 function prebuilt_lists_fetch($number = 10) {
-  $result = db_query("SELECT * FROM {prebuilt_lists} ORDER BY list_id ASC", 0, $number);
+  $result = db_query("SELECT * FROM {prebuilt_lists} ORDER BY list_id", 0, $number);
   return $result;
 };
 
