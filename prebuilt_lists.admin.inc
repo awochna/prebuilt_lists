@@ -11,7 +11,29 @@
 function prebuilt_lists_list() {
   //TODO: Query Database to select all in list table. Issue # 6
   //TODO: Add pagination for lots of lists. Issue #7
-  return;
+  
+  $query = db_select('prebuilt_lists')
+    ->extend('PagerDefault')
+    ->orderBy('list_id')
+    ->fields('name', 'description', 'path')
+    ->limit(10);
+    
+  $result = $query->execute();
+  
+  foreach($result as $row) {
+    $rows[] = array(
+      l($row->name, $row->path),
+      'description' => $row->description,
+      l('Edit', $row->path . '/edit'),
+      l('Delete', $row->path . '/delete'),
+    );
+  }
+  
+  $header = array('Name', 'Description', 'Edit', 'Delete');
+  
+  $output = theme('table', array('header' => $header, 'rows' => $rows)) . theme('pager');
+  
+  return $output;
 };
 
 /**
@@ -74,6 +96,7 @@ function add_prebuilt_lists() {
       'machine_name' => 'machine_name',
       'description' => 'description',
       'contents' => 'contents',
+      'path' => 'admin/structure/prebuilt-lists' . $machine_name,
       'uid' => $user->uid,  
     ))
     ->execute();
@@ -86,7 +109,7 @@ function add_prebuilt_lists() {
 
 function delete_prebuilt_lists($selection) {
   $deleted = db_delete('prebuilt_lists')
-    ->condition('list_id', $selection, '=')
+    ->condition('list_id', $selection)
     ->execute();
     
   return $deleted;

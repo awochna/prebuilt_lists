@@ -10,7 +10,6 @@
  */
 function prebuilt_lists_menu() {
 	
-	
   // Show existing prebuilt lists
   $items['admin/structure/prebuilt-lists'] = array(
     'title' => t('Prebuilt Lists'),

@@ -64,6 +64,11 @@ function prebuilt_lists_schema() {
         'not null' => TRUE,
         'default' => '',
       ),
+      'path' => array(
+        'description' => 'The path to the list to be viewed.',
+        'type' => 'varchar',
+        'not null' => TRUE,
+      )
     ),
     'unique keys' => array(
       'list_id' => array('list_id'),
