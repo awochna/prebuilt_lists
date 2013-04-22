@@ -5,8 +5,8 @@
  * 
  * list_id => autoincrementing primary unique key
  * uid => creating user's ID #FOREGIN KEY
- * title => title of the list as shown to the user
- * name => machine name of the list
+ * name => name of the list as shown to the user
+ * machine_name => machine name of the list
  * description => textarea to help other people understand purpose of list
  * contents => array of key/value pairs in the same style as webforms ( key|Value )
  */
@@ -41,13 +41,13 @@ function prebuilt_lists_schema() {
         'not null' => TRUE,
         'unsigned' => TRUE,
       ),
-      'title' => array(
-        'description' => 'Human title for this list.',
+      'name' => array(
+        'description' => 'Human-readable name for this list.',
         'type' => 'varchar',
         'length' => 255,
         'not null' => TRUE,
       ),
-      'name' => array(
+      'machine-name' => array(
         'description' => 'Machine name for this list (usually based on title).',
         'type' => 'varchar',
         'length' => 255,
@@ -56,7 +56,6 @@ function prebuilt_lists_schema() {
       'description' => array(
         'description' => 'Description for this list to help users understand its purpose/contents.',
         'type' => 'varchar',
-        'length' => 2048,
         'not null' => TRUE,
         'default' => '',
       ),

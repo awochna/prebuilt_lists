@@ -15,8 +15,9 @@ function prebuilt_lists_menu() {
   $items['admin/structure/prebuilt-lists'] = array(
     'title' => t('Prebuilt Lists'),
     'description' => t('Show all existing Prebuilt Lists'),
+    'access callback' => 'user access',
     'access arguments' => array('access administration pages'),
-    'page callback' => prebuilt_lists_list,
+    'page callback' => 'prebuilt_lists_list',
     'file' => 'prebuilt_lists.admin.inc',
     'file path' => drupal_get_path('module', 'prebuilt_lists'),
   );
@@ -25,8 +26,7 @@ function prebuilt_lists_menu() {
   $items['admin/structure/prebuilt-lists/new'] = array(
     'title' => t('New List'),
     'description' => t('Create a new list for use and reuse in Webforms'),
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('prebuilt_lists_new'),
+    'page callback' => 'new_prebuilt_lists_page',
     'access callback' => 'user access',
     'access arguments' => array('create prebuilt lists'),
     'file' => 'prebuilt_lists.admin.inc',
