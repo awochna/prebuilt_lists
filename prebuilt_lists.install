@@ -4,8 +4,81 @@
 /* Example Schema
  * 
  * list_id => autoincrementing primary unique key
+ * uid => creating user's ID #FOREGIN KEY
  * title => title of the list as shown to the user
  * name => machine name of the list
  * description => textarea to help other people understand purpose of list
  * contents => array of key/value pairs in the same style as webforms ( key|Value )
  */
+
+/**
+ * Implements hook_install().
+ */
+
+function prebuilt_lists_install() {
+  return;
+};
+
+/**
+ * Implements hook_uninstall().
+ */
+
+function prebuilt_lists_uninstall() {
+  return;
+};
+
+/**
+ * Implements hook_schema().
+ */
+
+function prebuilt_lists_schema() {
+  $schema['prebuilt_lists'] = array(
+    'description' => 'Table for prebuilt lists.',
+    'fields' => array(
+      'list_id' => array(
+        'description' => 'Autoincrementing primary unique key associated with list entry.',
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ),
+      'title' => array(
+        'description' => 'Human title for this list.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'Machine name for this list (usually based on title).',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'description' => array(
+        'description' => 'Description for this list to help users understand its purpose/contents.',
+        'type' => 'varchar',
+        'length' => 2048,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'contents' => array(
+        'description' => 'The actual list itself, stored as key/value pairs.',
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'unique keys' => array(
+      'list_id' => array('list_id'),
+    ),
+    'foreign keys' => array(
+      'creator' => array(
+        'table' => 'users',
+        'columns' => array('uid' => 'uid'),
+      ),
+    ),
+    'primary key' => array('list_id'),
+  );
+  
+  return $schema;
+  
+};
