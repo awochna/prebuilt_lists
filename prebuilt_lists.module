@@ -44,12 +44,13 @@ function prebuilt_lists_permission() {
   return array(
     'view prebuilt lists' => array(
       'title' => t('View Prebuilt Lists'),
-      'description' => t('Allows the user to view lists that have already been created'),
+      'description' => t('Allows the user to view lists that have already been created. Should coincide with ability to create and edit webforms.'),
     ),
     'create prebuilt lists' => array(
       'title' => t('Create/Update Prebuilt Lists'),
-      'description' => t('Allows the user to create new lists and update existing ones'),
+      'description' => t('Allows the user to create new lists and update existing ones.'),
     ),
+    //TODO: Fine-grain permissions.
   );
 };
 
@@ -57,6 +58,7 @@ function prebuilt_lists_fetch($number = 10) {
   $result = db_query("SELECT * FROM {prebuilt_lists} ORDER BY list_id ASC", 0, $number);
   return $result;
 };
+
 
 //TODO: Create logic for inserting new lists into the database. Issue #3
 //TODO: Implement hook_webform_select_options_info() Issue #4

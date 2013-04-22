@@ -61,7 +61,7 @@ function prebuilt_lists_new_validate($form, &$form_state) {
   return;
 };
 
-function prebuilt_lists_add() {
+function add_prebuilt_lists() {
   global $user;
   
   $list_id = db_insert('prebuilt_lists')
@@ -74,4 +74,12 @@ function prebuilt_lists_add() {
     ))
     ->execute();
   return $list_id;
+};
+
+function delete_prebuilt_lists($selection) {
+  $deleted = db_delete('prebuilt_lists')
+    ->condition('list_id', $selection, '=')
+    ->execute();
+    
+  return $deleted;
 };
