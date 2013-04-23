@@ -17,6 +17,13 @@ function prebuilt_lists_menu() {
     'access arguments' => array('view prebuilt lists'),
     'page callback' => 'prebuilt_lists_list',
     'file' => 'prebuilt_lists.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+  
+  // Have the listing as default tab
+  $items['admin/structure/prebuilt-lists/list'] = array(
+    'title' => 'List',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
   );
   
   // Create new list
@@ -26,6 +33,7 @@ function prebuilt_lists_menu() {
     'page callback' => 'new_prebuilt_lists_page',
     'access arguments' => array('create prebuilt lists'),
     'file' => 'prebuilt_lists.admin.inc',
+    'type' => MENU_LOCAL_TASK,
   );
   
   return $items;
