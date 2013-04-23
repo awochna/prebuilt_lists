@@ -6,3 +6,5 @@ configure = admin/structure/prebuilt_lists
 
 dependencies[] = webform
 files[] = prebuilt_lists.module
+files[] = prebuilt_lists.install
+files[] = prebuilt_lists.admin.inc
