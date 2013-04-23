@@ -46,7 +46,7 @@ function prebuilt_lists_schema() {
         'length' => 255,
         'not null' => TRUE,
       ),
-      'machine-name' => array(
+      'machine_name' => array(
         'description' => 'Machine name for this list (usually based on title).',
         'type' => 'varchar',
         'length' => 255,
