@@ -2,7 +2,7 @@ name = Webform Prebuilt Lists
 description = Allows the user to make "prebuilt lists" for use and reuse in Webforms without the issues with copy/pasting lists.
 core = 7.x
 package = Webform
-configure = admin/structure/prebuilt_lists
+configure = admin/structure/prebuilt-lists
 
 dependencies[] = webform
 files[] = prebuilt_lists.module
